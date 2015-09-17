@@ -22,6 +22,50 @@ Facebook.prototype.query = function(query, method) {
   });
 };
 
+Facebook.prototype.queryPaginated = function(query, method, eachCb) {
+  var first = this.query(query, method);
+  var handler = function handler(res) {
+    // If the callback returns true search the next page.
+    if (eachCb(res.data) === true) {
+      if (res.next) {
+        $.ajax({
+          method: 'get',
+          url: res.next
+        }).success(handler);
+      } else {
+        setTimeout(function () {
+          eachCb(null);
+        }, 0);
+      }
+    }
+  };
+
+  first.success(handler);
+};
+
+Facebook.prototype.searchGroupForUser = function (groupId, userId, cb) {
+  var hasFoundUser = false;
+
+  this.queryPaginated(Constants.groupId + '/members', 'get', function (users) {
+    if (users !== null) {
+      users.forEach(function (user) {
+        if (user.id === userId) {
+          hasFoundUser = true;
+          cb(true);
+        }
+      });
+      if (!hasFoundUser) {
+        return true;
+      }
+    } else {
+      // got to end of paging
+      cb(false);
+    }
+
+    return false;
+  });
+};
+
 Facebook.prototype.getUserData = function() {
   return this.query('me');
 };
