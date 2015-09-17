@@ -1,0 +1,26 @@
+<template name="mainLayout">
+  <head>
+    <title>SE 2020 Organizer</title>
+  </head>
+
+  <body>
+    <div class="container">
+      <div>
+        <h1>SE 2020 Organizer</h1>
+      </div>
+
+      <div class="row">
+        <!-- side nav -->
+        <div class="col-sm-4 col-md-3">
+          {{> nav}}
+        </div>
+
+        <!-- main viewport -->
+        <div class="col-sm-8 col-md-9">
+          {{> yield}}
+        </div>
+
+      </div>
+    </div>
+  </body>
+</template>

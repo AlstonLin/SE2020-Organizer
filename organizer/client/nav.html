@@ -1,0 +1,11 @@
+<template name="nav">
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <ul class="nav nav-pills nav-stacked">
+        {{#each courses}}
+          <li><a href="#"><strong>{{code}}</strong> {{name}}</a></li>
+        {{/each}}
+      </ul>
+    </div>
+  </div>
+</template>
