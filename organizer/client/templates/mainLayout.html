@@ -1,0 +1,38 @@
+<template name="mainLayout">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-9">
+        <a href="/">
+          <h1>SE 2020 Organizer</h1>
+        </a>
+      </div>
+      <div class="col-sm-3">
+        {{#if currentUser}}
+          {{> loginButtons}}
+        {{/if}}
+      </div>
+    </div>
+
+    {{#if currentUser}}
+      <div class="row">
+        <!-- side nav -->
+        <div class="col-sm-4 col-md-3">
+          {{> nav}}
+        </div>
+
+        <!-- main viewport -->
+        <div class="col-sm-8 col-md-9">
+          {{> yield}}
+        </div>
+
+      </div>
+    {{else}}
+      <div class="row">
+        <div class="col-md-12">
+          {{> loginButtons}}
+        </div>
+      </div>
+    {{/if}}
+
+  </div>
+</template>
