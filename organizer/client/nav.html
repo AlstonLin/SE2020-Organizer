@@ -3,7 +3,11 @@
     <div class="panel-body">
       <ul class="nav nav-pills nav-stacked">
         {{#each courses}}
-          <li><a href="#"><strong>{{code}}</strong> {{name}}</a></li>
+          <li>
+            <a href="/course/{{code}}">
+              <strong>{{code}}</strong> {{name}}
+            </a>
+          </li>
         {{/each}}
       </ul>
     </div>

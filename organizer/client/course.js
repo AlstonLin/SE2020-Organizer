@@ -1,0 +1,3 @@
+Template.course.helpers({
+
+})
