@@ -8,4 +8,4 @@ cd organizer
 meteor
 ```
 
-Then write code
+Then write code and navigate to `localhost:3030` in your browser
