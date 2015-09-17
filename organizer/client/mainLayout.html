@@ -12,22 +12,33 @@
           </a>
         </div>
         <div class="col-sm-3">
-          {{> loginButtons}}
+          {{#if currentUser}}
+            {{> loginButtons}}
+          {{/if}}
         </div>
       </div>
 
-      <div class="row">
-        <!-- side nav -->
-        <div class="col-sm-4 col-md-3">
-          {{> nav}}
-        </div>
+      {{#if currentUser}}
+        <div class="row">
+          <!-- side nav -->
+          <div class="col-sm-4 col-md-3">
+            {{> nav}}
+          </div>
 
-        <!-- main viewport -->
-        <div class="col-sm-8 col-md-9">
-          {{> yield}}
-        </div>
+          <!-- main viewport -->
+          <div class="col-sm-8 col-md-9">
+            {{> yield}}
+          </div>
 
-      </div>
+        </div>
+      {{else}}
+        <div class="row">
+          <div class="col-md-12">
+            {{> loginButtons}}
+          </div>
+        </div>
+      {{/if}}
+
     </div>
   </body>
 </template>
