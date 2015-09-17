@@ -1,0 +1,26 @@
+<template name="newAssignment">
+  <form class="form-horizontal">
+
+    <div class="form-group row">
+      <label class="control-label col-sm-3">Title</label>
+
+      <div class="col-sm-9">
+        <input type="text" class="form-control" name="title"/>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label class="control-label col-sm-3">Course</label>
+
+      <div class="col-sm-9">
+        <select class="form-control col-sm-9" name="course">
+          <option value="">None</option>
+          {{#each courses}}
+            <option value="{{code}}">{{code}} - {{name}}</option>
+          {{/each}}
+        </select>
+      </div>
+    </div>
+
+  </form>
+</template>

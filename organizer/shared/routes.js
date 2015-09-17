@@ -15,3 +15,7 @@ Router.route('/course/:code', function () {
     }
   })
 });
+
+Router.route('/new-assignment', {
+  template: 'newAssignment'
+});
