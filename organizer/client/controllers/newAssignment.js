@@ -1,5 +1,10 @@
 Template.newAssignment.helpers({
-  courses: function () {
-    return Courses.find();
+  courseOptions: function () {
+    return Courses.find().map(function (course) {
+      return {
+        value: course.code,
+        label: course.code + ' - ' + course.name
+      };
+    });
   }
 });

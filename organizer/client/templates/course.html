@@ -4,7 +4,23 @@
       <h2>{{course.name}}</h2>
       <h3>{{course.code}}</h3>
 
-      <p>{{assignments.count}} assignments.</p>
+      <p>{{assignments.count}} assignments:</p>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Due Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each assignments}}
+            <tr>
+              <td>{{title}}</td>
+              <td>{{due_date}}</td>
+            </tr>
+          {{/each}}
+        </tbody>
+      </table>
     </div>
   </div>
 </template>

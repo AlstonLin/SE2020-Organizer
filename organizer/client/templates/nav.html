@@ -6,6 +6,9 @@
           <li>
             <a href="/course/{{code}}">
               <strong>{{code}}</strong> {{name}}
+              {{#if showBadge code}}
+                <span class="badge pull-right">{{getBadge code}}</span>
+              {{/if}}
             </a>
           </li>
         {{/each}}

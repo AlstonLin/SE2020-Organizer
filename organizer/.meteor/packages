@@ -11,3 +11,8 @@ iron:router
 twbs:bootstrap
 accounts-facebook
 accounts-ui
+service-configuration
+aldeed:autoform
+aldeed:collection2
+aldeed:autoform-bs-datetimepicker
+tsega:bootstrap3-datetimepicker@=3.1.3_3

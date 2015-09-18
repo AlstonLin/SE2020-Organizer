@@ -1,17 +1,6 @@
 <template name="mainLayout">
   <div class="container">
-    <div class="row">
-      <div class="col-sm-9">
-        <a href="/">
-          <h1>SE 2020 Organizer</h1>
-        </a>
-      </div>
-      <div class="col-sm-3">
-        {{#if currentUser}}
-          {{> loginButtons}}
-        {{/if}}
-      </div>
-    </div>
+    {{> header}}
 
     {{#if currentUser}}
       <div class="row">

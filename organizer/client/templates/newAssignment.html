@@ -1,26 +1,11 @@
 <template name="newAssignment">
-  <form class="form-horizontal">
-
-    <div class="form-group row">
-      <label class="control-label col-sm-3">Title</label>
-
-      <div class="col-sm-9">
-        <input type="text" class="form-control" name="title"/>
-      </div>
+  {{#autoForm collection="Assignments" id="newAssignmentForm" type="insert"
+    template="bootstrap3-horizontal" label-class="col-sm-3" input-col-class="col-sm-9"}}
+    {{> afFormGroup name="course_code" options=courseOptions}}
+    {{> afFormGroup name="title"}}
+    {{> afFormGroup name="due_date"}}
+    <div class="form-group">
+      <button class="btn btn-primary" type="submit">Add Assignment</button>
     </div>
-
-    <div class="form-group row">
-      <label class="control-label col-sm-3">Course</label>
-
-      <div class="col-sm-9">
-        <select class="form-control col-sm-9" name="course">
-          <option value="">None</option>
-          {{#each courses}}
-            <option value="{{code}}">{{code}} - {{name}}</option>
-          {{/each}}
-        </select>
-      </div>
-    </div>
-
-  </form>
+  {{/autoForm}}
 </template>
