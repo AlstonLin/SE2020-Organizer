@@ -10,13 +10,28 @@
           <tr>
             <th>Title</th>
             <th>Due Date</th>
-          </tr>
+            <th>Type</th>
+            <th>Completed</th>
+          </tr> 
         </thead>
         <tbody>
           {{#each assignments}}
             <tr>
               <td>{{title}}</td>
               <td>{{due_date}}</td>
+              <td>
+                {{#if isReading}}
+                  Reading
+                {{else}}
+                  {{#if isNotGraded}}
+                    Not Graded
+                  {{else}}
+                    Graded
+                  {{/if}}
+                {{/if}}</td>
+              <td>
+                <input type="checkbox" checked="{{isCompleted}}" class="toggle-completed"/>
+              </td>
             </tr>
           {{/each}}
         </tbody>
@@ -24,3 +39,4 @@
     </div>
   </div>
 </template>
+
