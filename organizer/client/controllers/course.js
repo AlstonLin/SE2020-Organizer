@@ -4,7 +4,7 @@ Template.course.helpers({
   },
 
   isCompleted: function () {
-  	return this.completed == null ? false : contains(this.completed, Meteor.user().services.facebook.id); 
+  	return this.completed == null ? false : (this.completed.indexOf(Meteor.userId()) !== -1);
   },
 
   isReading: function(){
@@ -16,27 +16,17 @@ Template.course.helpers({
   },
 
   isGraded: function(){
-    return this.label == 1;
+    return this.label == 2;
   }
 });
 
-function contains(array, id){ //Helper function for isCompleted
-  for (var i = 0; i < array.length; i++){
-    var element = array[i];
-    if (element == id){
-      return true;
-    }
-  }
-  return false;
-};
-
 Template.course.events({
 	"click .toggle-completed" : function(event){ //Adds the user to the list of users who have completed
-    if (this.completed == null) { this.completed = [];} 
+    if (this.completed == null) { this.completed = [];}
     if (event.target.checked){ //Checked completed
-      this.completed.push(Meteor.user().services.facebook.id);
-    }else{ //Unchecked
-      delete this.completed[this.completed.indexOf(Meteor.user().services.facebook.id)];
+      this.completed.push(Meteor.userId());
+    } else { //Unchecked
+      delete this.completed[this.completed.indexOf(Meteor.userId())];
     }
     Assignments.update(this._id, {$set: {completed: this.completed}})
 	}
