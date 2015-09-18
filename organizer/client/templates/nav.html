@@ -5,7 +5,7 @@
         {{#each courses}}
           <li>
             <a href="/course/{{code}}">
-              <strong>{{code}}</strong> {{name}}
+              {{code}}
               {{#if showBadge code}}
                 <span class="badge pull-right">{{getBadge code}}</span>
               {{/if}}
