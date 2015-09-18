@@ -16,6 +16,12 @@ Router.route('/course/:code', function () {
   })
 });
 
-Router.route('/new-assignment', {
-  template: 'newAssignment'
+Router.route('/new-assignment', function () {
+  this.render('newAssignment', {
+    data: function () {
+      return {
+        course_code: this.params.query.course_code || null
+      };
+    }
+  });
 });

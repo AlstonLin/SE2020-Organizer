@@ -4,7 +4,12 @@
       <h2>{{course.name}}</h2>
       <h3>{{course.code}}</h3>
 
-      <p>{{assignments.count}} assignments:</p>
+      <p>
+        {{assignments.count}} assignments
+        <a href="/new-assignment?course_code={{course.code}}"
+          class="btn btn-success btn-sm"
+          data-toggle="tooltip" data-placement="right" title="New Assignment">+</a>
+      </p>
       <table class="table">
         <thead>
           <tr>
@@ -12,7 +17,7 @@
             <th>Due Date</th>
             <th>Type</th>
             <th>Completed</th>
-          </tr> 
+          </tr>
         </thead>
         <tbody>
           {{#each assignments}}

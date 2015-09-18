@@ -20,6 +20,10 @@ Template.course.helpers({
   }
 });
 
+Template.course.onRendered(function () {
+  this.$('[data-toggle="tooltip"]').tooltip();
+});
+
 Template.course.events({
 	"click .toggle-completed" : function(event){ //Adds the user to the list of users who have completed
     if (this.completed == null) { this.completed = [];}
