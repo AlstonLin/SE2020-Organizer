@@ -22,5 +22,21 @@ Assignments.attachSchema(new SimpleSchema({
         type: "bootstrap-datetimepicker"
       }
     }
+  },
+  label: {
+    type: Number, 
+    label: "Label",
+    allowedValues: [0, 1, 2], //Reading -> 0, Not Graded -> 1, Graded -> 2
+    autoform: {
+      options: [
+      {label: "Reading", value: 0},
+      {label: "Not Graded", value: 1},
+      {label: "Graded", value: 2},
+      ]
+    }
+  },
+  completed: {
+    type: [String],
+    defaultValue: []
   }
 }));
