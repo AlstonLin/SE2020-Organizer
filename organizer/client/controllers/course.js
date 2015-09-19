@@ -17,7 +17,8 @@ Template.course.helpers({
 
   isGraded: function(){
     return this.label == 2;
-  }
+  },
+
 });
 
 Template.course.onRendered(function () {
@@ -33,5 +34,18 @@ Template.course.events({
       delete this.completed[this.completed.indexOf(Meteor.userId())];
     }
     Assignments.update(this._id, {$set: {completed: this.completed}})
-	}
+	},
+
+  "submit .new-comment" : function(event){ //NOTE: BUG -> PRESSING ENTER CAUSES MODAL TO CLOSE
+    var text = event.target.text.value;
+    var comment = {
+      author: Meteor.user().profile.name,
+      date: new Date(),
+      message: text
+    };
+    if (this.comments == null){this.comments = []}
+    this.comments.push(comment);
+    Assignments.update(this._id, {$set: {comments: this.comments}})
+    event.target.text.value = "";
+  }
 })

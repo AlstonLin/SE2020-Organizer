@@ -38,5 +38,22 @@ Assignments.attachSchema(new SimpleSchema({
   completed: {
     type: [String],
     defaultValue: []
+  },
+  comments: {
+    type: [Object],
+    defaultValue: []
+
+  }, 
+  'comments.$.author' :{
+        type: String,
+        label: "Author"
+  },
+  'comments.$.date' :{
+        type: String,
+        label: "Date"
+  },
+  'comments.$.message' :{
+        type: String,
+        label: "Message"
   }
 }));

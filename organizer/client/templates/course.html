@@ -17,6 +17,7 @@
             <th>Due Date</th>
             <th>Type</th>
             <th>Completed</th>
+            <th>Comments</th>
           </tr>
         </thead>
         <tbody>
@@ -37,6 +38,38 @@
               <td>
                 <input type="checkbox" checked="{{isCompleted}}" class="toggle-completed"/>
               </td>
+              <td>
+                <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#commentModal">Comment</button>
+
+                <!-- Modal -->
+                <div id="commentModal" class="modal fade" role="dialog">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Comments</h4>
+                      </div>
+                      <div class="modal-body">
+                        <tbody>
+                        {{#each comments}}
+                        <tr>
+                          <td>{{author}}</td>
+                          <td>{{date}}</td> /<!-- TODO: FORMAT DATE -->
+                          <td>{{message}}</td>
+                        </tr>
+                        {{/each}}
+                        </tbody>
+                      </div>
+                      <div class="modal-footer">
+                        <form class="new-comment">
+                          <input type="text" name="text" placeholder="Comment" style="width=100%" data-backdrop="static">
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </td>
             </tr>
           {{/each}}
         </tbody>
@@ -44,4 +77,3 @@
     </div>
   </div>
 </template>
-
