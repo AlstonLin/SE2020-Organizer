@@ -2,7 +2,40 @@ Template.course.helpers({
   assignments: function() {
     return Assignments.find({
       course_code: this.course.code
+    }, {
+      sort: [
+        ['due_date', 'asc']
+      ]
     });
+  },
+
+  getComments: function(assignment) {
+    return AssignmentComments.find({
+      assignment_id: assignment._id
+    }, {
+      sort: [['date_created', 'desc']]
+    });
+  },
+
+  getCommentAuthor: function(comment) {
+    return Meteor.users.findOne({
+      _id: comment.creator_user_id
+    }).profile.name;
+  },
+
+  getCommentCountLabel: function(assignment) {
+    return AssignmentComments.find({
+      assignment_id: assignment._id
+    }).count() || '';
+  },
+
+  formatCommentDate: function(date) {
+    return moment(date).fromNow();
+  },
+
+  formatDueDate: function(date) {
+    var m = moment(date);
+    return m.format('MMM D h:mm A');
   },
 
   isCompleted: function() {
@@ -46,20 +79,14 @@ Template.course.events({
 
   "submit .new-comment": function(event) {
     var text = event.target.text.value;
-    var comment = {
-      author: Meteor.user().profile.name,
-      date: new Date(),
+
+    AssignmentComments.insert({
+      creator_user_id: Meteor.userId(),
+      assignment_id: this._id,
+      date_created: new Date(),
       message: text
-    };
-    if (this.comments == null) {
-      this.comments = []
-    }
-    this.comments.push(comment);
-    Assignments.update(this._id, {
-      $set: {
-        comments: this.comments
-      }
-    })
+    });
+
     event.target.text.value = "";
     event.preventDefault();
   }

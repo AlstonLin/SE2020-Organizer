@@ -3,8 +3,16 @@
 // notice the lack of 'var' below - this makes these variables accessible in
 // any module.
 Courses = new Mongo.Collection('courses');
-Assignments = new Mongo.Collection('assignments');
+Courses.attachSchema(new SimpleSchema({
+  name: {
+    type: String
+  },
+  code: {
+    type: String
+  }
+}));
 
+Assignments = new Mongo.Collection('assignments');
 Assignments.attachSchema(new SimpleSchema({
   course_code: {
     type: String,
@@ -24,36 +32,35 @@ Assignments.attachSchema(new SimpleSchema({
     }
   },
   label: {
-    type: Number, 
+    type: Number,
     label: "Label",
     allowedValues: [0, 1, 2], //Reading -> 0, Not Graded -> 1, Graded -> 2
     autoform: {
       options: [
-      {label: "Reading", value: 0},
-      {label: "Not Graded", value: 1},
-      {label: "Graded", value: 2},
+        {label: "Reading", value: 0},
+        {label: "Not Graded", value: 1},
+        {label: "Graded", value: 2},
       ]
     }
   },
   completed: {
     type: [String],
     defaultValue: []
-  },
-  comments: {
-    type: [Object],
-    defaultValue: []
+  }
+}));
 
-  }, 
-  'comments.$.author' :{
-        type: String,
-        label: "Author"
+AssignmentComments = new Mongo.Collection('assignment_comments');
+AssignmentComments.attachSchema(new SimpleSchema({
+  assignment_id: {
+    type: String
   },
-  'comments.$.date' :{
-        type: String,
-        label: "Date"
+  creator_user_id: {
+    type: String
   },
-  'comments.$.message' :{
-        type: String,
-        label: "Message"
+  date_created: {
+    type: Date
+  },
+  message: {
+    type: String
   }
 }));
