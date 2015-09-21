@@ -61,7 +61,8 @@ Template.course.onRendered(function() {
 });
 
 Template.course.events({
-  "click .toggle-completed": function(event) { //Adds the user to the list of users who have completed
+  "click .toggle-completed": function(event) {
+    //Adds the user to the list of users who have completed
     if (this.completed == null) {
       this.completed = [];
     }
