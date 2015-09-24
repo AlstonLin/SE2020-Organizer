@@ -3,9 +3,9 @@ Template.course.helpers({
     return Assignments.find({
       course_code: this.course.code
     }, {
-      sort: [
-        ['due_date', 'asc']
-      ]
+      sort: {
+        due_date: 1
+      }
     });
   },
 
@@ -13,7 +13,9 @@ Template.course.helpers({
     return AssignmentComments.find({
       assignment_id: assignment._id
     }, {
-      sort: [['date_created', 'desc']]
+      sort: {
+        date_created: -1
+      }
     });
   },
 
@@ -68,7 +70,8 @@ Template.course.onRendered(function() {
 });
 
 Template.course.events({
-  "click .toggle-completed": function(event) { //Adds the user to the list of users who have completed
+  "click .toggle-completed": function(event) {
+    //Adds the user to the list of users who have completed
     if (this.completed == null) {
       this.completed = [];
     }

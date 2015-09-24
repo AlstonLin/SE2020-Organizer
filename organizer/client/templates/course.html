@@ -23,7 +23,9 @@
         <tbody>
           {{#each assignments}}
             <tr>
-              <td>{{title}}</td>
+              <td>
+                <a href="/assignment/{{_id}}">{{title}}</a>
+              </td>
               <td>{{formatDueDate due_date}}</td>
               <td>
                 {{getLabel}}

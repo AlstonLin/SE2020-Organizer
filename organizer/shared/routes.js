@@ -25,3 +25,13 @@ Router.route('/new-assignment', function () {
     }
   });
 });
+
+Router.route('/assignment/:id', function () {
+  this.render('assignment', {
+    data: function () {
+      return {
+        assignment: Assignments.findOne(this.params.id)
+      };
+    }
+  });
+});
