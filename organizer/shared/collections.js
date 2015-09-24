@@ -34,12 +34,14 @@ Assignments.attachSchema(new SimpleSchema({
   label: {
     type: Number,
     label: "Label",
-    allowedValues: [0, 1, 2], //Reading -> 0, Not Graded -> 1, Graded -> 2
+    allowedValues: [0, 1, 2, 3, 4], //Reading -> 0, Not Graded -> 1, Graded -> 2
     autoform: {
       options: [
         {label: "Reading", value: 0},
         {label: "Not Graded", value: 1},
         {label: "Graded", value: 2},
+        {label: "Quiz", value: 3},
+        {label: "Exam", value: 4}
       ]
     }
   },

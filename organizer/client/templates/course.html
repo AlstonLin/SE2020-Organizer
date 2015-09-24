@@ -26,15 +26,8 @@
               <td>{{title}}</td>
               <td>{{formatDueDate due_date}}</td>
               <td>
-                {{#if isReading}}
-                  Reading
-                {{else}}
-                  {{#if isNotGraded}}
-                    Not Graded
-                  {{else}}
-                    Graded
-                  {{/if}}
-                {{/if}}</td>
+                {{getLabel}}
+              </td>
               <td>
                 <input type="checkbox" checked="{{isCompleted}}" class="toggle-completed"/>
               </td>
@@ -60,6 +53,7 @@
                           <tbody>
                             {{#each getComments this}}
                               <tr>
+                                <td><img class = "img-responsive img-circle" src="{{getAvatarURL}}" style="height: 20%"/> </td>
                                 <td>{{getCommentAuthor this}}</td>
                                 <td>{{formatCommentDate date_created}}</td> <!-- TODO: FORMAT DATE -->
                                 <td>{{message}}</td>

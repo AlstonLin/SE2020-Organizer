@@ -42,18 +42,25 @@ Template.course.helpers({
     return this.completed == null ? false : (this.completed.indexOf(Meteor.userId()) !== -1);
   },
 
-  isReading: function() {
-    return this.label == 0;
+  getLabel: function() {
+    switch (this.label){
+      case 0:
+        return "Reading";
+      case 1:
+        return "Not Graded";
+      case 2:
+        return "Graded";
+      case 3:
+        return "Quiz";
+      case 4:
+        return "Exam";
+      default:
+        return "ERROR";
+    }
   },
-
-  isNotGraded: function() {
-    return this.label == 1;
-  },
-
-  isGraded: function() {
-    return this.label == 2;
-  },
-
+  getAvatarURL: function () {
+    return Methods.getFacebookAvatarURL(Meteor.userId());
+  }
 });
 
 Template.course.onRendered(function() {
