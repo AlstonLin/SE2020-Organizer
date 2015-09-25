@@ -1,0 +1,37 @@
+<template name="newLectureNote">
+  <style scoped>
+    textarea {
+      font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+    }
+  </style>
+
+  {{#autoForm collection="LectureNotes" id="newLectureNoteForm" doc=doc
+    validation="none"}}
+
+    {{> afFormGroup name="course_code" options=courseOptions}}
+    {{> afFormGroup name="lecture_date"}}
+
+    <div class="form-group row">
+      <div class="col-md-6">
+        <textarea class="form-control" name="markdown" rows="8">{{markdownText}}</textarea>
+      </div>
+      <div class="col-md-6">
+        <div class="text-muted">
+          Preview:
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-body">
+            {{#markdown}}{{markdownText}}{{/markdown}}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </div>
+    </div>
+
+  {{/autoForm}}
+</template>

@@ -35,11 +35,6 @@ Template.course.helpers({
     return moment(date).fromNow();
   },
 
-  formatDueDate: function(date) {
-    var m = moment(date);
-    return m.format('MMM D h:mm A');
-  },
-
   isCompleted: function() {
     return this.completed == null ? false : (this.completed.indexOf(Meteor.userId()) !== -1);
   },
@@ -55,6 +50,12 @@ Template.course.helpers({
   isGraded: function() {
     return this.label == 2;
   },
+
+  notes: function () {
+    return LectureNotes.find({
+      course_code: this.course.code
+    });
+  }
 
 });
 

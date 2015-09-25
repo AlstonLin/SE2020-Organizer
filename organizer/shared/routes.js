@@ -35,3 +35,23 @@ Router.route('/assignment/:id', function () {
     }
   });
 });
+
+Router.route('/lecture-note/:id', function () {
+  this.render('lectureNote', {
+    data: function () {
+      return {
+        note: LectureNotes.findOne(this.params.id)
+      };
+    }
+  });
+});
+
+Router.route('/new-lecture-note/:course_code', function () {
+  this.render('newLectureNote', {
+    data: {
+      doc: {
+        course_code: this.params.course_code
+      }
+    }
+  })
+})

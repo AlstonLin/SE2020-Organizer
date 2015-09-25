@@ -1,0 +1,7 @@
+<template name="lectureNote">
+  <h3><span class="text-muted">{{note.course_code}}</span> {{formatMedDate note.lecture_date}}</h3>
+  <hr>
+  <div>
+    {{#markdown}}{{note.markdown}}{{/markdown}}
+  </div>
+</template>

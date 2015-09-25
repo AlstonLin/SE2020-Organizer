@@ -64,3 +64,28 @@ AssignmentComments.attachSchema(new SimpleSchema({
     type: String
   }
 }));
+
+LectureNotes = new Mongo.Collection('lecture_notes');
+LectureNotes.attachSchema(new SimpleSchema({
+  course_code: {
+    type: String
+  },
+  creator_user_id: {
+    type: String
+  },
+  date_created: {
+    type: Date
+  },
+  lecture_date: {
+    type: Date,
+    label: 'Lecture Date',
+    autoform: {
+      afFieldInput: {
+        type: "bootstrap-datetimepicker"
+      }
+    }
+  },
+  markdown: {
+    type: String
+  }
+}));
