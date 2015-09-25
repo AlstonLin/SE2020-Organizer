@@ -27,5 +27,10 @@ Methods = {
       user.services.facebook.id,
       cb
     );
+  },
+
+  getFacebookAvatarURL: function(userId){
+    var id = Meteor.users.findOne(userId).services.facebook.id;
+    return "http://graph.facebook.com/" + id + "/picture?type=large";
   }
 };

@@ -27,10 +27,10 @@ Facebook.prototype.queryPaginated = function(query, method, eachCb) {
   var handler = function handler(res) {
     // If the callback returns true search the next page.
     if (eachCb(res.data) === true) {
-      if (res.next) {
+      if (res.paging.next) {
         $.ajax({
           method: 'get',
-          url: res.next
+          url: res.paging.next
         }).success(handler);
       } else {
         setTimeout(function () {
@@ -62,6 +62,17 @@ Facebook.prototype.searchGroupForUser = function (groupId, userId, cb) {
       cb(false);
     }
 
+    return false;
+  });
+};
+
+Facebook.prototype.getProfilePicture = function (userId) {
+  var hasFoundUser = false; 
+
+  this.queryPaginated(userId + '/picture', 'get', function (response) {
+    if (response != null && !response.error) {
+      
+    }
     return false;
   });
 };
