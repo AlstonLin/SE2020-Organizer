@@ -1,11 +1,11 @@
-AutoForm.addHooks('newAssignmentForm', {
-  onSubmit: function (insertDoc, updateDoc, currentDoc) {
-    // TODO show interactive form validation
+Session.set('newAssignment-markdown', '');
 
+AutoForm.addHooks('newAssignmentForm', {
+  onSubmit: function (insertDoc) {
     AssignmentDescriptions.insert({
       assignment_id: assignment.id,
       course_code: insertDoc.course_code,
-      markdown: Session.get('newLecture-markdown'),
+      markdown: Session.get('newAssignment-markdown'),
       date_created: new Date(),
       creator_user_id: Meteor.userId(),
       version: 1

@@ -2,7 +2,6 @@ Template.assignment.helpers({
   formatCommentDate: function(date) {
     return moment(date).fromNow();
   },
-
   formatDueDate: function(date) {
     var m = moment(date);
     return m.format('MMM D h:mm A');
@@ -31,6 +30,11 @@ Template.assignment.helpers({
     return AssignmentComments.find({
       assignment_id: assignment._id
     }).count() || '';
+  },
+  getDescription: function(assignment){
+    return AssignmentDecriptions.find({
+      assignment_id: assignment_id
+    });
   }
 });
 
