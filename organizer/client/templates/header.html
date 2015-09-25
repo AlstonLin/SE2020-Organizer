@@ -20,8 +20,9 @@
         <ul class="nav navbar-nav navbar-right">
           {{#if currentUser}}
             <form class="navbar-form navbar-right">
-              <img class = "img-responsive img-circle" style="width:10%;" src="{{getAvatarURL}}" align="left"/>
+              
               <a href="{{currentUser.services.facebook.link}}" target="_blank">
+                <img class = "img-circle" src="{{getAvatarURL}}" style="height: 40px;" />
                 {{currentUser.profile.name}}
               </a>
               <button class="btn btn-default js-logout">Log out</button>

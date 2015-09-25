@@ -91,3 +91,26 @@ LectureNotes.attachSchema(new SimpleSchema({
     type: String
   }
 }));
+
+
+AssignmentDescriptions = new Mongo.Collection('assignment_descriptions');
+AssignmentDescriptions.attachSchema(new SimpleSchema({
+  course_code:{
+    type: String
+  },
+  assignment_id: {
+    type: String
+  },
+  creator_user_id: {
+    type: String
+  },
+  markdown: {
+    type: String
+  },
+  date_created: {
+    type: Date
+  }, 
+  version: {
+    type: Number
+  }
+}));
