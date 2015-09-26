@@ -32,9 +32,9 @@ Template.assignment.helpers({
     }).count() || '';
   },
   getDescription: function(assignment){
-    return AssignmentDecriptions.find({
-      assignment_id: assignment_id
-    });
+    return AssignmentDescriptions.findOne({
+      assignment_id: assignment._id
+    }).markdown;
   }
 });
 

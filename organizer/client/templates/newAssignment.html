@@ -1,6 +1,5 @@
 <template name="newAssignment">
   {{#autoForm collection="Assignments" id="newAssignmentForm" doc=doc
-    type="method" meteormethod="createAssignment"
     template="bootstrap3-horizontal" label-class="col-sm-3" input-col-class="col-sm-9"}}
     {{> afFormGroup name="course_code" options=courseOptions}}
     {{> afFormGroup name="title"}}
@@ -9,6 +8,7 @@
 
     <div class="form-group row">
       <div class="col-md-6">
+        <h3>Description</h3>
         <textarea class="form-control" name="markdown" rows="8">{{markdownText}}</textarea>
       </div>
 

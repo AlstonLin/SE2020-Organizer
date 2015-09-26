@@ -2,8 +2,14 @@ Session.set('newAssignment-markdown', '');
 
 AutoForm.addHooks('newAssignmentForm', {
   onSubmit: function (insertDoc) {
-    AssignmentDescriptions.insert({
-      assignment_id: assignment.id,
+    var assignment_id = Assignments.insert({
+      course_code: insertDoc.course_code,
+      title: insertDoc.title, 
+      due_date: insertDoc.due_date,
+      label: insertDoc.label,
+    });
+
+    var description_id = AssignmentDescriptions.insert({
       course_code: insertDoc.course_code,
       markdown: Session.get('newAssignment-markdown'),
       date_created: new Date(),
@@ -11,7 +17,13 @@ AutoForm.addHooks('newAssignmentForm', {
       version: 1
     });
 
-    Router.go('/course/' + insertDoc.course_code + "/" + insertDoc.assignment_id);
+    AssignmentDescriptions.update(description_id, {
+      $set:{
+        assignment_id: assignment_id
+      }
+    });
+
+    Router.go('/assignment/' + assignment_id);
 
     return false;
   }

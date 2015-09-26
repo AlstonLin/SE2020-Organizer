@@ -99,7 +99,8 @@ AssignmentDescriptions.attachSchema(new SimpleSchema({
     type: String
   },
   assignment_id: {
-    type: String
+    type: String,
+    defaultValue: ""
   },
   creator_user_id: {
     type: String
