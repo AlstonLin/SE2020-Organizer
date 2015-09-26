@@ -46,7 +46,7 @@ Template.newAssignment.helpers({
   }, 
    markdownText: function () {
     return Session.get('newAssignment-markdown');
-  },
+  }
 
 });
 
