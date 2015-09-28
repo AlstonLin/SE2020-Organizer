@@ -48,6 +48,11 @@ Assignments.attachSchema(new SimpleSchema({
   completed: {
     type: [String],
     defaultValue: []
+  }, 
+  url: {
+    optional: true,
+    type: String,
+    label: "URL (Optional)"
   }
 }));
 

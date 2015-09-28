@@ -7,6 +7,7 @@ AutoForm.addHooks('newAssignmentForm', {
       title: insertDoc.title, 
       due_date: insertDoc.due_date,
       label: insertDoc.label,
+      url : insertDoc.url.indexOf("http://") == 0 ? insertDoc.url : "http://" + insertDoc.url //The link given starts with http://
     });
 
     var description_id = AssignmentDescriptions.insert({
