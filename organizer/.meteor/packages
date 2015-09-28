@@ -10,6 +10,7 @@ iron:router
 twbs:bootstrap
 accounts-facebook
 accounts-ui
+accounts-google
 service-configuration
 aldeed:autoform
 aldeed:collection2
