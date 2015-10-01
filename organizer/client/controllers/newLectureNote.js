@@ -1,5 +1,3 @@
-Session.set('newLecture-markdown', '');
-
 AutoForm.addHooks('newLectureNoteForm', {
   onSubmit: function (insertDoc, updateDoc, currentDoc) {
     // TODO show interactive form validation
@@ -36,4 +34,8 @@ Template.newLectureNote.events({
   'keyup textarea[name="markdown"]': function (e, context) {
     Session.set('newLecture-markdown', e.target.value);
   }
+});
+
+Template.newLectureNote.onCreated(function(){
+  Session.set('newLecture-markdown', '');
 });

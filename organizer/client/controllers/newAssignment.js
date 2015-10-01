@@ -1,13 +1,15 @@
-Session.set('newAssignment-markdown', '');
-
 AutoForm.addHooks('newAssignmentForm', {
   onSubmit: function (insertDoc) {
     var assignment_id = Assignments.insert({
       course_code: insertDoc.course_code,
       title: insertDoc.title, 
       due_date: insertDoc.due_date,
-      label: insertDoc.label,
-      url : insertDoc.url.indexOf("http://") == 0 ? insertDoc.url : "http://" + insertDoc.url //The link given starts with http://
+      label: insertDoc.label, 
+      function(){
+        if (insertDoc.url){
+          url : insertDoc.url.indexOf("http://") == 0 ? insertDoc.url : "http://" + insertDoc.url //The link given starts with http://
+        }
+      }
     });
 
     var description_id = AssignmentDescriptions.insert({
@@ -56,3 +58,7 @@ Template.newAssignment.events({
     Session.set('newAssignment-markdown', e.target.value);
   }
 });
+
+Template.newAssignment.onCreated(function(){
+  Session.set('newAssignment-markdown', '');
+})
