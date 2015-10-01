@@ -42,6 +42,17 @@ Methods = {
         id: Meteor.userId()
       }).fetch(); 
     }
+  },
+  addCalendarevent: function(assignment) {
+    var event = {
+      'summary': assignment.title,
+      'start': {
+      'dateTime': assignment.due_date
+      } 
+    }
+  },
+  loadCalendarApi: function(assignment) {
+  gapi.client.load('calendar', 'v3', addCalendarEvent(assignment));
   }
 };
 
