@@ -1,4 +1,6 @@
-Session.set('edit-markdown', '');
+Session.set('assignment-edit-markdown', '');
+Session.set('assignment-editing-markdown', false);
+
 Template.assignment.helpers({
   formatCommentDate: function(date) {
     return moment(date).fromNow();
@@ -32,22 +34,29 @@ Template.assignment.helpers({
       assignment_id: assignment._id
     }).count() || '';
   },
-  getDescription: function(assignment){
-    var markdownText = AssignmentDescriptions.find({
-      assignment_id: assignment._id
+  markdownText: function () {
+    var editingText = Session.get('assignment-edit-markdown');
+    return editingText;
+  },
+
+  description() {
+    var desc = AssignmentDescriptions.findOne({
+      assignment_id: this.assignment._id
     }, {
       sort: {version: -1}
-    }).fetch()[0].markdown;
-    Session.set('edit-markdown', markdownText);
-    return markdownText;
+    });
+    return desc;
   },
-  markdownText: function () {
-    return Session.get('edit-markdown');
+
+
+  
+  isEditingDesc: function () {
+    return Session.get('assignment-editing-markdown');
   }
 });
 
 Template.assignment.events({
-	 "submit .new-comment": function(event) {
+  "submit .new-comment": function(event) {
     var text = event.target.text.value;
     var blah = this;
     var temp = this.assignment._id;
@@ -76,24 +85,42 @@ Template.assignment.events({
     event.target.text.value = "";
     event.preventDefault();
   },
-  "click .submit": function(event){
+  "click .js-save-desc": function(event){
     var old = AssignmentDescriptions.find({
       assignment_id: this.assignment._id
-    }, {sort: {
-      version: -1
-    }}).fetch()[0];
-    var text = Session.get('edit-markdown');
+    }, {
+      sort: {
+        version: -1
+      },
+      limit: 1
+    }).fetch()[0];
+    var text = Session.get('assignment-edit-markdown');
+    var version = 1;
+    if (old) {
+      version = old.version + 1;
+    }
     AssignmentDescriptions.insert({
-      assignment_id: old.assignment_id,
-      course_code: old.course_code,
-      markdown: Session.get('edit-markdown'),
+      assignment_id: this.assignment._id,
+      markdown: Session.get('assignment-edit-markdown'),
       date_created: new Date(),
       creator_user_id: Meteor.userId(),
-      version: old.version + 1
+      version: version 
     });
-    $('#editModal-'+old.assignment_id).modal('hide');
+    Session.set('assignment-editing-markdown', false);
   },
   'keyup textarea[name="markdown"]': function (e, context) {
-    Session.set('edit-markdown', e.target.value);
-  }
+    Session.set('assignment-edit-markdown', e.target.value);
+  },
+  "click .js-edit-desc": function () {
+    var desc = AssignmentDescriptions.findOne({
+      assignment_id: this.assignment._id
+    }, {
+      sort: {version: -1}
+    });
+    Session.set('assignment-editing-markdown', 
+      !Session.get('assignment-editing-markdown'));
+    if (desc) {
+      Session.set('assignment-edit-markdown', desc.markdown);
+    }
+  },
 });

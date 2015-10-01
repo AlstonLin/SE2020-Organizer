@@ -7,79 +7,74 @@
   </div>
 
   <div class="row">
-  	<div class="col-md-6">
-  		<div class="panel panel-default">
-  			<div class="panel-body">
+    <div class="col-md-6">
+      <div class="panel panel-default">
+        <div class="panel-body">
           <div class="row">
-  	  			<h3 style="float:left">Description</h3>
-            <button type="button" class="btn btn-warning" style="float:right" 
-            data-toggle="modal" data-target="#editModal-{{assignment._id}}">Edit</button>
-
-            <!-- Modal -->
-            <div id="editModal-{{assignment._id}}" class="modal fade" role="dialog">
-              <div class="modal-dialog">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">{{assignment.title}} - Edit Description</h4>
-                  <div class="row">
-                    <div class="col-md-6">
-                      <h3>Text</h3>
-                      <textarea class="form-control" name="markdown" rows="8">{{markdownText}}</textarea>
-                    </div>
-                  <div class="col-md-6">
-                    <div class="text-muted">
-                      Preview:
-                    </div>
-                  <div class="panel panel-default">
-                    <div class="panel-body">
-                      {{#markdown}}{{markdownText}}{{/markdown}}
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-            </div>
-                  
-
-
-                  <div class="modal-footer">
-                    <form class="submit">
-                      <button type="button" class="btn btn-success">Submit</button> 
-                    </form>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-
+            <p style="float:left">Description</p>
+            <button type="button" class="btn btn-warning js-edit-desc pull-right">
+              {{#if isEditingDesc}}
+                Cancel
+              {{else}}
+                Edit
+              {{/if}}
+            </button>
+            {{#if isEditingDesc}}
+              <button class="btn btn-primary js-save-desc pull-right">
+                Save
+              </button>
+            {{/if}}
           </div>
-          {{#markdown}}{{getDescription assignment}}{{/markdown}}
-  			</div>
-  		</div>
-  	</div>
-  	<div class="col-md-6">
-  		<div class="panel panel-default">
-  			<div class="panel-body">
-  				<h3>Comments</h3>
-	  			<table class="table">
-	  				<tbody>
-	  			    {{#each getComments assignment}}
-               <tr>
-	              <td><img class = "img-circle" src="{{getCommentAuthorAvatarURL this}}" style="height: 40px"/> </td>
-                <td>{{getCommentAuthor this}}</td>
-                <td>{{formatCommentDate date_created}}</td> <!-- TODO: FORMAT DATE -->
-                <td>{{message}}</td>
-              </tr>
-	            {{/each}}
-	  				</tbody>
-	  			</table>
+          {{#if isEditingDesc}}
+            <div class="form-group row">
+              <div class="col-md-12">
+                <textarea name="markdown" 
+                  class="form-control">{{markdownText}}</textarea>
+              </div>
+            </div>
+            <div class="form-group row">
+              <div class="col-md-12">
+                <div>
+                  <small class="text-muted">Preview</small>
+                </div>
+                {{#markdown}}{{markdownText}}{{/markdown}}
+              </div>
+            </div>
+          {{else}}
+            <div class="row">
+              {{#markdown}}{{description.markdown}}{{/markdown}}
+            </div>
+          {{/if}}
+          </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <h3>Comments</h3>
+          <table class="table">
+            <tbody>
+              {{#each getComments assignment}}
+                <tr>
+                  <td>
+                    <img class = "img-circle" 
+                      src="{{getCommentAuthorAvatarURL this}}" 
+                      style="height: 40px"/> 
+                  </td>
+                  <td>{{getCommentAuthor this}}</td>
+                  <td>
+                    {{formatCommentDate date_created}}
+                  </td> <!-- TODO: FORMAT DATE -->
+                  <td>{{message}}</td>
+                </tr>
+              {{/each}}
+            </tbody>
+          </table>
           <form class="new-comment">
             <input type="text" name="text" class="form-control" placeholder="Comment" style="width=100%" data-backdrop="static">
           </form>
-  			</div>
-  		</div>
-  	</div>
+        </div>
+      </div>
+    </div>
   </div>
-
  </template>
