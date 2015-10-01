@@ -18,7 +18,8 @@
 
       <div class="collapse navbar-collapse" id="main-nav-collapse">
         <ul class="nav navbar-nav navbar-right">
-          {{#if currentUser}}
+          {{#if validLogin}}
+
             <form class="navbar-form navbar-right">
               
               <a href="{{currentUser.services.facebook.link}}" target="_blank">

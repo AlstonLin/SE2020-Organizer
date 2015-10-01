@@ -9,3 +9,4 @@ Meteor.startup(function () {
     Courses.insert({name: 'Methods of Software Engineering', code: 'SE 101'});
   }
 });
+

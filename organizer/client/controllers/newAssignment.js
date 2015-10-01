@@ -61,4 +61,4 @@ Template.newAssignment.events({
 
 Template.newAssignment.onCreated(function(){
   Session.set('newAssignment-markdown', '');
-})
+});

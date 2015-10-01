@@ -120,3 +120,13 @@ AssignmentDescriptions.attachSchema(new SimpleSchema({
     type: Number
   }
 }));
+
+ValidUsers = new Mongo.Collection('valid_users');
+ValidUsers.attachSchema(new SimpleSchema({
+  id:{
+    type: String
+  },
+  valid:{
+    type: Boolean
+  }
+}));

@@ -39,13 +39,11 @@ Facebook.prototype.queryPaginated = function(query, method, eachCb) {
       }
     }
   };
-
   first.success(handler);
 };
 
 Facebook.prototype.searchGroupForUser = function (groupId, userId, cb) {
   var hasFoundUser = false;
-
   this.queryPaginated(Constants.groupId + '/members', 'get', function (users) {
     if (users !== null) {
       users.forEach(function (user) {
@@ -62,17 +60,6 @@ Facebook.prototype.searchGroupForUser = function (groupId, userId, cb) {
       cb(false);
     }
 
-    return false;
-  });
-};
-
-Facebook.prototype.getProfilePicture = function (userId) {
-  var hasFoundUser = false; 
-
-  this.queryPaginated(userId + '/picture', 'get', function (response) {
-    if (response != null && !response.error) {
-      
-    }
     return false;
   });
 };

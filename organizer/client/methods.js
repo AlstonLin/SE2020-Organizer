@@ -32,5 +32,19 @@ Methods = {
   getFacebookAvatarURL: function(userId){
     var id = Meteor.users.findOne(userId).services.facebook.id;
     return "http://graph.facebook.com/" + id + "/picture?type=large";
+  },
+
+  validLogin: function (){
+    if (!Meteor.user()){
+      return false;
+    }else{
+      return ValidUsers.find({
+        id: Meteor.userId()
+      }).fetch(); 
+    }
   }
 };
+
+Template.registerHelper("validLogin", function(){
+  return Methods.validLogin();
+});
