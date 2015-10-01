@@ -26,8 +26,8 @@ AutoForm.addHooks('newAssignmentForm', {
       }
     });
 
+    Methods.addtoCalendar(assignment_id);
     Router.go('/assignment/' + assignment_id);
-
     return false;
   }
 });

@@ -34,15 +34,9 @@ Methods = {
     return "http://graph.facebook.com/" + id + "/picture?type=large";
   },
 
-  addCalendarevent: function(assignment) {
-    var event = {
-      'summary': assignment.title,
-      'start': {
-      'dateTime': assignment.due_date
-      } 
-    }
-  },
-  loadCalendarApi: function(assignment) {
-  gapi.client.load('calendar', 'v3', addCalendarEvent(assignment));
+  addtoCalendar: function(assignment_id) {
+    calendar = Google();
+    auth = Google.checkAuth();
+    calendar.handleAuthResult(auth, assignment_id);
   }
 };
