@@ -32,5 +32,17 @@ Methods = {
   getFacebookAvatarURL: function(userId){
     var id = Meteor.users.findOne(userId).services.facebook.id;
     return "http://graph.facebook.com/" + id + "/picture?type=large";
+  },
+
+  addCalendarevent: function(assignment) {
+    var event = {
+      'summary': assignment.title,
+      'start': {
+      'dateTime': assignment.due_date
+      } 
+    }
+  },
+  loadCalendarApi: function(assignment) {
+  gapi.client.load('calendar', 'v3', addCalendarEvent(assignment));
   }
 };
