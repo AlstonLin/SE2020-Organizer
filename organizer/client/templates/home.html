@@ -1,18 +1,39 @@
 <template name="home">
-  <h2>Welcome!</h2>
-  <p>
-    Click a course on the left to view current assignments, readings and more!
-  </p>
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="panel panel-inverse">
+        <div class="panel-heading">
+          Welcome!
+        </div>
+        <div class="panel-body">
+          <p>
+            Click a course on the left to view current assignments, readings and more!
+          </p>
+        </div>      
+      </div>
+    </div>
+  </div>
   <div class="row">
   	<div class="col-md-6">
-  		<div class="panel">
+  		<div class="panel panel-inverse">
+        <div class="panel-heading">
+          Upcoming Events
+        </div>
+        <div class="panel-body">
+          Upcoming events go here.
+        </div>
   		</div>
   	</div>
   	<div class="col-md-6">
-		  <div class="panel panel-default">
-			  <body>
-			  	<iframe src="https://www.google.com/calendar/embed?src=se2020organizer%40gmail.com" style="border: 0" width="400" height="600" frameborder="0" scrolling="no"></iframe>
-			  </body>
+		  <div class="panel panel-inverse">
+        <div class="panel-heading">
+          SE2020 Calender
+        </div>
+        <div class="panel-body">
+          <body class="calender">
+            <iframe src="https://www.google.com/calendar/embed?src=se2020organizer%40gmail.com" style="border: 0" width="400" height="600" frameborder="0" scrolling="no"></iframe>
+          </body>
+        </div>
 			</div>
 		</div>
 	</div>

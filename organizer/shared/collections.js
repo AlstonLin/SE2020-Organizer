@@ -100,9 +100,6 @@ LectureNotes.attachSchema(new SimpleSchema({
 
 AssignmentDescriptions = new Mongo.Collection('assignment_descriptions');
 AssignmentDescriptions.attachSchema(new SimpleSchema({
-  course_code:{
-    type: String
-  },
   assignment_id: {
     type: String,
     defaultValue: ""
@@ -118,5 +115,15 @@ AssignmentDescriptions.attachSchema(new SimpleSchema({
   }, 
   version: {
     type: Number
+  }
+}));
+
+ValidUsers = new Mongo.Collection('valid_users');
+ValidUsers.attachSchema(new SimpleSchema({
+  id:{
+    type: String
+  },
+  valid:{
+    type: Boolean
   }
 }));

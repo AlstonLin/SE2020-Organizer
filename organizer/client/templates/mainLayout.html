@@ -1,8 +1,8 @@
 <template name="mainLayout">
-  <div class="container">
+  <div class="container mainContainer">
     {{> header}}
 
-    {{#if currentUser}}
+    {{#if validLogin}}
       <div class="row">
         <!-- side nav -->
         <div class="col-sm-4 col-md-3">

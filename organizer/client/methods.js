@@ -34,9 +34,35 @@ Methods = {
     return "http://graph.facebook.com/" + id + "/picture?type=large";
   },
 
+<<<<<<< HEAD
   addtoCalendar: function(assignment_id) {
     calendar = Google();
     auth = Google.checkAuth();
     calendar.handleAuthResult(auth, assignment_id);
+=======
+  validLogin: function (){
+    if (!Meteor.user()){
+      return false;
+    }else{
+      return ValidUsers.find({
+        id: Meteor.userId()
+      }).fetch(); 
+    }
+  },
+  addCalendarevent: function(assignment) {
+    var event = {
+      'summary': assignment.title,
+      'start': {
+      'dateTime': assignment.due_date
+      } 
+    }
+  },
+  loadCalendarApi: function(assignment) {
+  gapi.client.load('calendar', 'v3', addCalendarEvent(assignment));
+>>>>>>> origin/master
   }
 };
+
+Template.registerHelper("validLogin", function(){
+  return Methods.validLogin();
+});

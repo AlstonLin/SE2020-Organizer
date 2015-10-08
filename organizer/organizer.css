@@ -1,1 +1,202 @@
 /* CSS declarations go here */
+body {
+	background: #fff;
+	font: 400 14px/1.8 "Open Sans", sans-serif;
+	color: #777;
+	overflow-x: hidden;
+	-ms-overflow-style: scrollbar;
+}
+
+img {
+	max-width: 100%;
+	height: auto;
+}
+
+iframe {
+	border: 0;
+}
+
+.text-muted {
+    color: #777;
+}
+
+.text-primary {
+    color: #ff0000;
+}
+
+p {
+    font-size: 25px;
+    line-height: 1.25;
+}
+
+p .small{
+    font-size: 24px;
+    line-height: 1.25;
+}
+
+p.large {
+    font-size: 30px;
+}
+
+a,
+a:hover,
+a:focus,
+a:active,
+a.active {
+    outline: 0;
+}
+
+a {
+    color: #ff0000;
+}
+
+a:hover,
+a:focus,
+a:active,
+a.active {
+    color: #990000;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    text-transform: uppercase;
+    font-family: "Lora",sans-serif;
+    font-weight: 4000;
+}
+
+.img-centered {
+    margin: 0 auto;
+}
+
+.bg-light-gray {
+    background-color: #f7f7f7;
+}
+
+.bg-darkest-gray {
+    background-color: #222;
+}
+
+.btn-primary {
+    border-color: #080808;
+    text-transform: uppercase;
+    font-family: "Lora",sans-serif;
+    font-weight: 700;
+    color: #fff;
+    background-color: #222;
+}
+
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active,
+.btn-primary.active,
+.open .dropdown-toggle.btn-primary {
+    border-color: #fff;
+    color: #ff0000;
+    background-color: #222;
+}
+
+.btn-primary:active,
+.btn-primary.active,
+.open .dropdown-toggle.btn-primary {
+    background-image: none;
+}
+
+.btn-primary.disabled,
+.btn-primary[disabled],
+fieldset[disabled] .btn-primary,
+.btn-primary.disabled:hover,
+.btn-primary[disabled]:hover,
+fieldset[disabled] .btn-primary:hover,
+.btn-primary.disabled:focus,
+.btn-primary[disabled]:focus,
+fieldset[disabled] .btn-primary:focus,
+.btn-primary.disabled:active,
+.btn-primary[disabled]:active,
+fieldset[disabled] .btn-primary:active,
+.btn-primary.disabled.active,
+.btn-primary[disabled].active,
+fieldset[disabled] .btn-primary.active {
+    border-color: #ff0000;
+    background-color: #990000;
+}
+
+.btn-primary .badge {
+    color: #ff0000;
+    background-color: #fff;
+}
+
+.btn-xl {
+    padding: 20px 40px;
+    border-color: #ff0000;
+    border-radius: 5px;
+    text-transform: uppercase;
+    font-family: "Lora",Helvetica,Arial,sans-serif;
+    font-size: 18px;
+    letter-spacing: 2;
+    font-weight: 700;
+    color: #fff;
+    background-color: #ff0000;
+}
+
+.btn-xl:hover,
+.btn-xl:focus,
+.btn-xl:active,
+.btn-xl.active,
+.open .dropdown-toggle.btn-xl {
+    border-color: #990000;
+    color: #fff;
+    background-color: #990000;
+}
+
+.btn-xl:active,
+.btn-xl.active,
+.open .dropdown-toggle.btn-xl {
+    background-image: none;
+}
+
+.btn-xl.disabled,
+.btn-xl[disabled],
+fieldset[disabled] .btn-xl,
+.btn-xl.disabled:hover,
+.btn-xl[disabled]:hover,
+fieldset[disabled] .btn-xl:hover,
+.btn-xl.disabled:focus,
+.btn-xl[disabled]:focus,
+fieldset[disabled] .btn-xl:focus,
+.btn-xl.disabled:active,
+.btn-xl[disabled]:active,
+fieldset[disabled] .btn-xl:active,
+.btn-xl.disabled.active,
+.btn-xl[disabled].active,
+fieldset[disabled] .btn-xl.active {
+    border-color: #ff0000;
+    background-color: #ff0000;
+}
+
+.btn-xl .badge {
+    color: #ff0000;
+    background-color: #fff;
+}
+
+.brand {
+	display: inline-block;
+	color: #ff0000;
+	font-size: 30px;
+}
+
+.panel-inverse .panel-heading {
+	background-color: #222;
+	border-color: #080808;
+	color: #ff0000;
+}
+
+.header{
+	background-color: #222;
+	border-color: #080808;
+	color: #ff0000;
+}
+
