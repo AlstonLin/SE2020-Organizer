@@ -1,7 +1,7 @@
 <template name="nav">
-  <div class="navbar navbar-inverse">
-        <ul class="nav nav-pills nav-stacked text-center">
-          <li>
+  <div class="fixed main-sidebar navbar navbar-inverse">
+        <ul class="sidebar-menu content-header nav nav-pills nav-stacked text-center">
+          <li class="user-header">
             <a href="{{currentUser.services.facebook.link}}" target="_blank" >
               <img class = "img-thumbnail" src="{{getAvatarURL}}" style="height: 80px;" />
               <br>Welcome, {{currentUser.profile.name}}

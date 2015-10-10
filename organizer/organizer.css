@@ -1,11 +1,100 @@
-/* CSS declarations go here */
+@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic);
+
+html,
 body {
-	background: #fff;
-	font: 400 14px/1.8 "Open Sans", sans-serif;
-	color: #777;
-	overflow-x: hidden;
-	-ms-overflow-style: scrollbar;
+  min-height: 100%;
 }
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 400;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+/* Fixed layout */
+.fixed .main-header,
+.fixed .main-sidebar,
+.fixed .left-side {
+  position: fixed;
+}
+.fixed .main-header {
+  top: 0;
+  right: 0;
+  left: 0;
+}
+.fixed .content-wrapper,
+.fixed .right-side {
+  padding-top: 50px;
+}
+@media (max-width: 767px) {
+  .fixed .content-wrapper,
+  .fixed .right-side {
+    padding-top: 100px;
+  }
+}
+.fixed.layout-boxed .wrapper {
+  max-width: 100%;
+}
+body.hold-transition .content-wrapper,
+body.hold-transition .right-side,
+body.hold-transition .main-footer,
+body.hold-transition .main-sidebar,
+body.hold-transition .left-side,
+body.hold-transition .main-header > .navbar,
+body.hold-transition .main-header .logo {
+  /* Fix for IE */
+  -webkit-transition: none;
+  -o-transition: none;
+  transition: none;
+}
+/* Content */
+.content {
+  min-height: 250px;
+  padding: 15px;
+  margin-right: auto;
+  margin-left: auto;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+/* H1 - H6 font */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+  font-family: 'Source Sans Pro', sans-serif;
+}
+/* General Links */
+a {
+  color: #ecf0f1;
+}
+a:hover,
+a:active,
+a:focus {
+  outline: none;
+  text-decoration: none;
+  color: #72afd2;
+}
+/* Page Header */
+.page-header {
+  margin: 10px 0 20px 0;
+  font-size: 22px;
+}
+.page-header > small {
+  color: #666;
+  display: block;
+  margin-top: 5px;
+}
+
 
 img {
 	max-width: 100%;
@@ -16,187 +105,50 @@ iframe {
 	border: 0;
 }
 
-.text-muted {
-    color: #777;
+.sidebar-menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
-
-.text-primary {
-    color: #ff0000;
+.sidebar-menu > li {
+  position: relative;
+  margin: 0;
+  padding: 0;
 }
-
-p {
-    font-size: 25px;
-    line-height: 1.25;
+.sidebar-menu > li > a {
+  padding: 12px 5px 12px 15px;
+  display: block;
 }
-
-p .small{
-    font-size: 24px;
-    line-height: 1.25;
+.sidebar-menu > li > a > .fa,
+.sidebar-menu > li > a > .glyphicon,
+.sidebar-menu > li > a > .ion {
+  width: 20px;
 }
-
-p.large {
-    font-size: 30px;
+.sidebar-menu > li .label,
+.sidebar-menu > li .badge {
+  margin-top: 3px;
+  margin-right: 5px;
 }
-
-a,
-a:hover,
-a:focus,
-a:active,
-a.active {
-    outline: 0;
-}
-
-a {
-    color: #ff0000;
-}
-
-a:hover,
-a:focus,
-a:active,
-a.active {
-    color: #990000;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    text-transform: uppercase;
-    font-family: "Lora",sans-serif;
-    font-weight: 4000;
-}
-
-.img-centered {
-    margin: 0 auto;
-}
-
-.bg-light-gray {
-    background-color: #f7f7f7;
-}
-
-.bg-darkest-gray {
-    background-color: #222;
-}
-
-.btn-primary {
-    border-color: #080808;
-    text-transform: uppercase;
-    font-family: "Lora",sans-serif;
-    font-weight: 700;
-    color: #fff;
-    background-color: #222;
-}
-
-.btn-primary:hover,
-.btn-primary:focus,
-.btn-primary:active,
-.btn-primary.active,
-.open .dropdown-toggle.btn-primary {
-    border-color: #fff;
-    color: #ff0000;
-    background-color: #222;
-}
-
-.btn-primary:active,
-.btn-primary.active,
-.open .dropdown-toggle.btn-primary {
-    background-image: none;
-}
-
-.btn-primary.disabled,
-.btn-primary[disabled],
-fieldset[disabled] .btn-primary,
-.btn-primary.disabled:hover,
-.btn-primary[disabled]:hover,
-fieldset[disabled] .btn-primary:hover,
-.btn-primary.disabled:focus,
-.btn-primary[disabled]:focus,
-fieldset[disabled] .btn-primary:focus,
-.btn-primary.disabled:active,
-.btn-primary[disabled]:active,
-fieldset[disabled] .btn-primary:active,
-.btn-primary.disabled.active,
-.btn-primary[disabled].active,
-fieldset[disabled] .btn-primary.active {
-    border-color: #ff0000;
-    background-color: #990000;
-}
-
-.btn-primary .badge {
-    color: #ff0000;
-    background-color: #fff;
-}
-
-.btn-xl {
-    padding: 20px 40px;
-    border-color: #ff0000;
-    border-radius: 5px;
-    text-transform: uppercase;
-    font-family: "Lora",Helvetica,Arial,sans-serif;
-    font-size: 18px;
-    letter-spacing: 2;
-    font-weight: 700;
-    color: #fff;
-    background-color: #ff0000;
-}
-
-.btn-xl:hover,
-.btn-xl:focus,
-.btn-xl:active,
-.btn-xl.active,
-.open .dropdown-toggle.btn-xl {
-    border-color: #990000;
-    color: #fff;
-    background-color: #990000;
-}
-
-.btn-xl:active,
-.btn-xl.active,
-.open .dropdown-toggle.btn-xl {
-    background-image: none;
-}
-
-.btn-xl.disabled,
-.btn-xl[disabled],
-fieldset[disabled] .btn-xl,
-.btn-xl.disabled:hover,
-.btn-xl[disabled]:hover,
-fieldset[disabled] .btn-xl:hover,
-.btn-xl.disabled:focus,
-.btn-xl[disabled]:focus,
-fieldset[disabled] .btn-xl:focus,
-.btn-xl.disabled:active,
-.btn-xl[disabled]:active,
-fieldset[disabled] .btn-xl:active,
-.btn-xl.disabled.active,
-.btn-xl[disabled].active,
-fieldset[disabled] .btn-xl.active {
-    border-color: #ff0000;
-    background-color: #ff0000;
-}
-
-.btn-xl .badge {
-    color: #ff0000;
-    background-color: #fff;
+.sidebar-menu li.header {
+  padding: 10px 25px 10px 15px;
+  font-size: 12px;
 }
 
 .brand {
 	display: inline-block;
-	color: #ff0000;
+	color: #ecf0f1;
 	font-size: 30px;
 }
 
 .panel-inverse .panel-heading {
 	background-color: #222;
 	border-color: #080808;
-	color: #ff0000;
+	color: #ecf0f1;
 }
 
 .header{
 	background-color: #222;
 	border-color: #080808;
-	color: #ff0000;
+	color: #ecf0f1;
 }
 
