@@ -2,7 +2,8 @@
   <div class="mainContainer">
     {{> header}}
 
-    {{#if validLogin}}
+    {{#if currentUser}}
+      {{#if validLogin}}
       <div class="row">
         <!-- side nav -->
         <div class="col-sm-4 col-md-3">
@@ -15,6 +16,15 @@
         </div>
 
       </div>
+      <!-- User logged in, but not valid--> 
+      {{else}}
+      <div class="row">
+        <div class="col-md-12">
+          <h2>To log in, your Facebook account must be part of the Software Engineering 2020 group. </h2>
+          <a href= "https://www.facebook.com/groups/464502600377423">Click Here to Join</a>
+        </div>
+      </div>
+      {{/if}}
     {{else}}
       <div class="row">
         <div class="col-md-12">
