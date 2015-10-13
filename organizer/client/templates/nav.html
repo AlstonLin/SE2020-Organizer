@@ -1,19 +1,26 @@
 <template name="nav">
-  <div class="fixed main-sidebar navbar navbar-inverse">
+  <div class="main-sidebar navbar navbar-inverse">
         <ul class="sidebar-menu content-header nav nav-pills nav-stacked text-center">
           <li class="user-header">
-            <a href="{{currentUser.services.facebook.link}}" target="_blank" >
-              <img class = "img-thumbnail" src="{{getAvatarURL}}" style="height: 80px;" />
-              <br>Welcome, {{currentUser.profile.name}}
+            <a href="{{currentUser.services.facebook.link}}" target="_blank" class="hvr-sweep-to-right">
+              <h4>Welcome, {{currentUser.profile.name}}</h4>
+              <img class = "img-rounded" src="{{getAvatarURL}}" style="height: 80px; margin-top:10px"/>
+            </a>
+          </li>
+          <li >
+            <a href="/" class="hvr-sweep-to-right">
+              <h4>
+                Home
+              </h4>
             </a>
           </li>
           {{#each courses}}
-            <li>
-              <a href="/course/{{code}}">
+            <li class="hvr-sweep-to-right">
+              <a href="/course/{{code}}" class="hvr-rectangle-in">
                 {{code}}
-                {{#if showBadge code}}
+                <!-- {{#if showBadge code}} -->
                   <span class="badge pull-right">{{getBadge code}}</span>
-                {{/if}}
+                <!-- {{/if}} -->
               </a>
             </li>
           {{/each}}

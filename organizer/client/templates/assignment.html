@@ -1,80 +1,93 @@
 <template name="assignment">
   <div class="row">
-  	<h2>{{#if assignment.url}}<a href="{{assignment.url}}">Assignment Page - {{assignment.title}}</a>
+    <div class="panel panel-inverse">
+      <div class="panel-heading">
+        <h2>{{#if assignment.url}}<a href="{{assignment.url}}">Assignment Page - {{assignment.title}}</a>
       {{else}}Assignment Page - {{assignment.title}}{{/if}}</h2>
-  	<h3 style="float:left;">{{assignment.course_code}}</h3>
-  	<h3 style="float:right;">Due : {{formatDueDate assignment.due_date}}</h3>
-  </div>
-
-  <div class="row">
-    <div class="col-md-6">
-      <div class="panel panel-default">
-        <div class="panel-body">
-          <div class="row">
-            <p style="float:left">Description</p>
-            <button type="button" class="btn btn-warning js-edit-desc pull-right">
-              {{#if isEditingDesc}}
-                Cancel
-              {{else}}
-                Edit
-              {{/if}}
-            </button>
-            {{#if isEditingDesc}}
-              <button class="btn btn-primary js-save-desc pull-right">
-                Save
-              </button>
-            {{/if}}
-          </div>
-          {{#if isEditingDesc}}
-            <div class="form-group row">
-              <div class="col-md-12">
-                <textarea name="markdown" 
-                  class="form-control">{{markdownText}}</textarea>
-              </div>
-            </div>
-            <div class="form-group row">
-              <div class="col-md-12">
-                <div>
-                  <small class="text-muted">Preview</small>
-                </div>
-                {{#markdown}}{{markdownText}}{{/markdown}}
-              </div>
-            </div>
-          {{else}}
-            <div class="row">
-              {{#markdown}}{{description.markdown}}{{/markdown}}
-            </div>
-          {{/if}}
-          </div>
       </div>
-    </div>
-    <div class="col-md-6">
-    <div class="panel panel-default">
       <div class="panel-body">
-        <h3>Comments</h3>
-          <table class="table">
-            <tbody>
-              {{#each getComments assignment}}
-                <tr>
-                  <td>
-                    <img class = "img-circle" 
-                      src="{{getCommentAuthorAvatarURL this}}" 
-                      style="height: 40px"/> 
-                  </td>
-                  <td>{{getCommentAuthor this}}</td>
-                  <td>
-                    {{formatCommentDate date_created}}
-                  </td> <!-- TODO: FORMAT DATE -->
-                  <td>{{message}}</td>
-                </tr>
-              {{/each}}
-            </tbody>
-          </table>
-          <form class="new-comment">
-            <input type="text" name="text" class="form-control" placeholder="Comment" style="width=100%" data-backdrop="static">
-          </form>
+        <div class="row">
+          <h3 style="float:left; padding-left:20px;">{{assignment.course_code}}</h3>
+          <h3 style="float:right; padding-right:20px;">Due : {{formatDueDate assignment.due_date}}</h3>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="panel panel-inverse">
+              <div class="panel-heading">
+                <div class="row">
+                  <p style="float:left; padding-left:10px">Description</p>
+                  <button type="button" class="btn btn-warning js-edit-desc pull-right" style="padding-right:10px;">
+                    {{#if isEditingDesc}}
+                      Cancel
+                    {{else}}
+                      Edit
+                    {{/if}}
+                  </button>
+                  {{#if isEditingDesc}}
+                    <button class="btn btn-primary js-save-desc pull-right" style="padding-right:10px;">
+                      Save
+                    </button>
+                  {{/if}}
+                </div>
+              </div>
+              <div class="panel-body">
+                {{#if isEditingDesc}}
+                  <div class="form-group row">
+                    <div class="col-md-12">
+                      <textarea name="markdown" 
+                        class="form-control">{{markdownText}}</textarea>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <div class="col-md-12">
+                      <div>
+                        <small class="text-muted">Preview</small>
+                      </div>
+                      {{#markdown}}{{markdownText}}{{/markdown}}
+                    </div>
+                  </div>
+                {{else}}
+                  <div class="row">
+                    {{#markdown}}{{description.markdown}}{{/markdown}}
+                  </div>
+                {{/if}}
+                </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+          <div class="panel panel-inverse">
+            <div class="panel-heading">
+              <p>Comments</p>
+            </div>
+            <div class="panel-body">
+              
+                <table class="table">
+                  <tbody>
+                    {{#each getComments assignment}}
+                      <tr>
+                        <td>
+                          <img class = "img-circle" 
+                            src="{{getCommentAuthorAvatarURL this}}" 
+                            style="height: 40px"/> 
+                        </td>
+                        <td>{{getCommentAuthor this}}</td>
+                        <td>
+                          {{formatCommentDate date_created}}
+                        </td> <!-- TODO: FORMAT DATE -->
+                        <td>{{message}}</td>
+                      </tr>
+                    {{/each}}
+                  </tbody>
+                </table>
+                <form class="new-comment">
+                  <input type="text" name="text" class="form-control" placeholder="Comment" style="width=100%" data-backdrop="static">
+                </form>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
+      
     </div>
   </div>
- </template>
+</template>
